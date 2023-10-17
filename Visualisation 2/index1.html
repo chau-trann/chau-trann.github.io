@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Cause of Death Over Time</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+
+</head>
+
+<body>
+
+  <div class="page">
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h1>Causes of Death Over Time</h1>
+        <p>Evaluating the health of a population is most commonly measured by examining mortality,
+           including metrics like child mortality and life expectancy, which are derived from mortality 
+           estimates. However, concentrating solely on mortality overlooks the broader impact of diseases, 
+           as they not only result in death but also inflict suffering on those living with them. A comprehensive
+           assessment of health outcomes should consider both mortality and morbidity, encompassing prevalent diseases,
+           to offer a more holistic perspective on the overall health status.</p>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <div id="choropleth_map" class="vis-container"></div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div class="description description-left">
+          <h2> Total Deaths Over Time</h2>
+          <p>The data presented encapsulates the total cases of death globally, offering a comprehensive view of the impact beyond mere mortality figures. Spanning the extensive period from 1990 to 2019, this dataset provides insights into the broader spectrum of health outcomes, acknowledging that <FONT COLOR="#FFAD7B" ><b>diseases</b></FONT> not only result in fatalities but also <FONT COLOR="#FFAD7B" ><b>contribute significantly to overall morbidity</b></FONT>.
+
+            <br><br>In examining the worldwide distribution, it becomes evident that certain countries have higher level of deaths. Notably, <FONT COLOR="#377eb8"><b>China and India</b></FONT> can be seen consistently registering some of the <FONT COLOR="#FFAD7B" ><b>highest death counts</b></FONT>. This observation aligns with the fact that both <FONT COLOR="#377eb8"><b>China and India</b></FONT> boast the largest populations globally. </p>
+        </div>
+      </div>
+      <div class="pure-u-1-2">
+        <div class="description description-right">
+          <p><br> The correlation between high death counts and population size shows the relationship between demographic factors and health outcomes. <FONT COLOR="#FFAD7B" ><b>Larger populations inherently face a higher risk of diseases spreading</b></FONT>, potentially leading to increased cases of death.
+
+            <br><br>By looking at causes of deaths rather than just using the mortality metrics and  <FONT COLOR="#FFAD7B" ><b>elving into the broader context</b></FONT> of total death cases, allows us to have a <FONT COLOR="#FFAD7B" ><b>better understanding</b></FONT> of the global health landscape. It shows the big impact that diseases contributes to death totals, emphasizing the need for comprehensive approaches to public health that extend beyond mortality considerations. </p>
+        </div>
+      </div>
+    <!-- end pure grid group -->
+
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div class="description description-left">
+          <h2>Affect Alcohol & Drugs have on Death Total</h2>
+          <p>
+            The dataset sescribes the relationship of <FONT COLOR="#FFAD7B" ><b>deaths associated with alcohol and drug use</b></FONT>, revealing intriguing patterns over time and across countries. Particularly, early data highlights a considerable toll in <FONT COLOR="#377eb8"><b>China</b></FONT>, where <FONT COLOR="#FFAD7B" ><b>drug-related deaths were markedly higher</b></FONT> compared to other nations. This observation prompts a deeper exploration into the historical context and societal factors that contributed to this elevated mortality rate.
+            
+            <br><br><FONT COLOR="#ff7f00"><b>Russia</b></FONT> emerges as a focal point for <FONT COLOR="#FFAD7B" ><b>deaths linked to alcohol consumption</b></FONT>. However, a positive shift can be seen, suggesting a potential impact from health promotion campaigns or evolving societal attitudes toward alcohol. The <FONT COLOR="#FFAD7B" ><b>decrease in alcohol-related deaths</b></FONT> implies a positive trend, reflecting the efficacy of <FONT COLOR="#FFAD7B" ><b>public health initiatives</b></FONT> in mitigating this particular cause of mortality.
+            
+            <br><br>In contrast, the <FONT COLOR="#e41a1c"><b>United States</b></FONT> presents a contrasting result, as there is a substantial increase in deaths attributed to drug use. <FONT COLOR="#FFAD7B" ><b>Understanding</b></FONT> this surge in <FONT COLOR="#FFAD7B" ><b>drug-related deaths</b></FONT> is crucial for the formulation of targeted interventions and policy measures to address the underlying causes.
+            
+            <br><br>Overall, the dataset offers an insight into the changes of deaths associated with alcohol and drug use. It invites exploration into the cultural, social, and policy contexts that shape these trends, facilitating a better understanding of the challenges and opportunities for public health interventions on a global scale.</p>
+        </div>
+      </div>
+      <div class="pure-u-1-2">
+          <div id="bubblemap" class="vis-container1" height="700" width="398"></div>
+        </div>      
+      </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div id="linechart" class="vis-container2"></div>
+      </div>
+      <div class="pure-u-1-2">
+        <div class="description description-right">
+          <h2>Affect HIV & AIDS have on Death Total</h2>
+          <p> This cisualisation shows the average death count caused by HIV/AIDS per year for each continent. Throughout the 2000s,<FONT COLOR="#FFAD7B" ><b>HIV/AIDS emerged as a significant contributor</b></FONT>  to global mortality. The impact of this epidemic has been particularly pronounced in <FONT COLOR="#a6cee3"><b>Africa</b></FONT>, where the prevalence of HIV/AIDS-related deaths has surpassed all other continents. The scale of the crisis in Africa has been a poignant reminder of the intricate <FONT COLOR="#FFAD7B" ><b>intersection between health, socio-economic factors, and regional disparities</b></FONT>.
+            
+            <br><br>There has been a gradual decline in HIV/AIDS-related deaths globally, <FONT COLOR="#FFAD7B" ><b>reflecting the success of sustained interventions and advancements in medical treatments</b></FONT>. This positive trajectory is indicative of the collective strides made in understanding, preventing, and managing HIV/AIDS. While challenges persist, The decrease in HIV/AIDS-related deaths is a positive sign of progress in the global effort to tackle this tough health challenge. It shows that we're moving in the right direction and gives hope that we can overcome this significant problem.</p>
+        </div>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <div id="scatter" class="vis-container"></div>
+      </div>
+    </div> 
+    <!-- end pure grid group -->
+
+    <!-- pure grid group --> 
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <div class="description description-left">
+          <h2>Overview on the Causes of Deaths</h2>
+          <p>The dataset offers a detailed overview of the <FONT COLOR="#FFAD7B" ><b>different factors contributing to mortality over the years</b></FONT>. It serves as a valuable resource for understanding the diverse causes behind deaths and their geographical distribution. This information is instrumental in guiding our approach to <FONT COLOR="#FFAD7B" ><b>public health interventions and policies</b></FONT>. By understanding the patterns and trends in causes of death, we can strategically prioritise and direct resources towards areas that need attention the most.
+            <br><br>This data enables us to <FONT COLOR="#FFAD7B" ><b>identify the predominant causes of death in different regions</b></FONT>, facilitating a targeted and effective response.   
+
+          </p>
+        </div>
+      </div>
+      <div class="pure-u-1-2">
+        <div class="description description-right">
+          <p><br>It's a roadmap that guides us in comprehending not only the 'what' but also the 'where,' allowing for a nuanced <FONT COLOR="#FFAD7B" ><b>understanding of the health challenges</b></FONT> faced by various communities.
+
+          <br><br>This information is a key tool to <FONT COLOR="#FFAD7B" ><b>prevent and mitigate the impact of these deaths</b></FONT>. Having insights from the data, we can tailor prevention strategies, public health campaigns, and medical interventions to address specific challenges in specific locations. Overall, the data becomes a powerful instrument in shaping evidence-based policies and practices aimed at fostering <FONT COLOR="#FFAD7B" ><b>better health outcomes and reducing mortality rates across the globe</b></FONT>.</p>
+        </div>
+      </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g1">
+      <div class="pure-u-1-1 small-font">
+        <p>This visualisation is created by Chau Tran </a>. The datasource is <a href="https://www.kaggle.com/datasets/iamsouravbanerjee/cause-of-deaths-around-the-world" target=" _blank">Cause of Deaths around the World</href>.</p>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+  </div> <!-- end page -->
+
+  <script type="text/javascript">
+    var spec1 = "js/map2.vg.json";
+    vegaEmbed("#choropleth_map", spec1, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+
+    var spec2 = "js/testing.vg.json";
+    vegaEmbed("#scatter", spec2, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+
+    var spec3 = "js/linechart.vg.json";
+    vegaEmbed("#linechart", spec3, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+
+    var spec4 = "js/scatterplot.vg.json";
+    vegaEmbed("#bubblemap", spec4, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+
+  </script>
+</body>
+
+</html>
